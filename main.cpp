@@ -4,6 +4,8 @@
 #include <cstring>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <pwd.h>
+#include <cerrno>
 
 namespace fs = std::filesystem;
 
@@ -33,32 +35,59 @@ void created_directory(const std::string &path) {
     }
 }
 
+void mount_path_to_ram(const char *path, const char *options) {
+    mount("tmpfs", path, "tmpfs", MS_REMOUNT, options);
+    switch (errno) {
+        case EPERM:
+            std::cout << "mount_path_to_ram: need access root " << path << std::endl;
+            break;
+        case EINVAL:
+            mount("tmpfs", path, "tmpfs", 0, options);
+            break;
+    };
+}
+
+void umount_path(const char *path) {
+    if (umount2(path, 0) != 0) {
+        switch (errno) {
+            case EINVAL:
+                std::cout << path << " not mounted" << std::endl;
+                break;
+        }
+    }
+}
+
+void usage(){
+    std::cout << "test" << std::endl;
+}
+
 int main(int argc, char *argv[]) {
-    /* stat */
-//    struct stat st{};
-//    std::cout << stat("/home/xxx", &st) << std::endl;
-//    std::cout << st.st_uid << std::endl;
+    std::string path_home = "/root";
+    if (argc == 2) {
+        path_home.replace(0, 5, "/home/");
+        path_home.append(argv[1]);
+    }
 
+    const char *paths[] = {
+            "/home/xxx/.cache/test",
+            "/home/xxx/.cache/ttest1",
+            "/home/xxx/.cache/tedada",
+    };
 
-//    const char *paths[] = {
-//            "/home/xxx/.cache/test",
-//    };
-//
-//    for (auto &path : paths) {
-//        created_directory(path);
-//        if (argc == 2) {
-//            if (strcmp(argv[1], "umount") == 0) {
-//                if (umount2(path, 0) != 0) {
-//                    std::cout << "umont filed " << path << std::endl;
-//                }
-//            }
-//        } else {
-//            if (mount("tmpfs", path, "tmpfs", MS_REMOUNT, "size=5000m") == -1) {
-//                if (mount("tmpfs", path, "tmpfs", 0, "size=5000m") != 0) {
-//                    std::cout << "mount filed " << path << std::endl;
-//                }
-//            }
-//        }
-//    }
+    for (auto &path : paths) {
+        created_directory(path);
+        if (argc == 2 && strcmp(argv[1], "umount") == 0) {
+            umount_path(path);
+        } else if (argc == 1) {
+            std::string options = "size=5000m,mode=0755";
+            struct stat st{};
+            stat(path_home.c_str(), &st);
+            options.append(",uid=" + std::to_string(st.st_gid) + ",gid=" + std::to_string(st.st_gid));
+            mount_path_to_ram(path, options.c_str());
+        } else{
+            usage();
+            break;
+        }
+    }
     return 0;
 }
