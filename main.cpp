@@ -47,12 +47,14 @@ void mount_path_to_ram(const char *path, const char *options) {
 }
 
 void umount_path(const char *path) {
-    if (umount2(path, 0) != 0) {
-        switch (errno) {
-            case EINVAL:
-                std::cout << path << " not mounted" << std::endl;
-                break;
-        }
+    umount2(path, 0);
+    switch (errno) {
+        case 0:
+            std::cout << "success umount " << path << std::endl;
+            break;
+        case EINVAL:
+            std::cout << path << " not mounted" << std::endl;
+            break;
     }
 }
 
@@ -66,6 +68,9 @@ int main(int argc, char *argv[]) {
     if (argc == 3 && (strcmp(argv[1], "-id") == 0)) {
         path_home.replace(0, 5, "/home/");
         path_home.append(argv[2]);
+        if (!fs::exists(path_home)) {
+            std::cout << "user dengan name " << argv[2] << " tidak ada" << std::endl;
+        }
     }
 
 
@@ -73,13 +78,13 @@ int main(int argc, char *argv[]) {
         created_directory(path);
         if (argc == 2 && strcmp(argv[1], "-u") == 0) {
             umount_path(path);
-        } else if (argc == 1 || argc == 3  && (strcmp(argv[1], "-id") == 0)) {
+        } else if (argc == 1 || argc == 3 && (strcmp(argv[1], "-id") == 0)) {
             std::string options = "size=5000m,mode=0755";
             struct stat st{};
             stat(path_home.c_str(), &st);
             options.append(",uid=" + std::to_string(st.st_gid) + ",gid=" + std::to_string(st.st_gid));
             mount_path_to_ram(path, options.c_str());
-        } else{
+        } else {
             usage();
             break;
         }
