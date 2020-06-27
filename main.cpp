@@ -34,13 +34,14 @@ void created_directory(const std::string &path) {
 }
 
 int main(int argc, char *argv[]) {
-    struct stat st{};
-    std::cout << stat("/home/xxx", &st) << std::endl;
-    std::cout << st.st_uid << std::endl;
+    /* stat */
+//    struct stat st{};
+//    std::cout << stat("/home/xxx", &st) << std::endl;
+//    std::cout << st.st_uid << std::endl;
 
 
 //    const char *paths[] = {
-//            "/tmp/aaaa/sasas",
+//            "/home/xxx/.cache/test",
 //    };
 //
 //    for (auto &path : paths) {
