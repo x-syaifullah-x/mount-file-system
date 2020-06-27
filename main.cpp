@@ -35,10 +35,6 @@ void created_directory(const std::string &path) {
 int main(int argc, char *argv[]) {
     const char *paths[] = {
             "/tmp/aaaa/sasas",
-            "/tmp/aaaa/asaaa",
-            "/tmp/aaaa/aaaaa",
-            "/tmp/aaaa/ssss",
-            "/tmp/aaaa/sdsdsd",
     };
 
     for (auto &path : paths) {
