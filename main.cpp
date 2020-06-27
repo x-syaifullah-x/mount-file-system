@@ -3,9 +3,8 @@
 #include <sys/mount.h>
 #include <cstring>
 #include <sys/stat.h>
-#include <unistd.h>
-#include <pwd.h>
 #include <cerrno>
+#include "paths.h"
 
 namespace fs = std::filesystem;
 
@@ -57,28 +56,24 @@ void umount_path(const char *path) {
     }
 }
 
-void usage(){
-    std::cout << "test" << std::endl;
+void usage() {
+    std::cout << "command -id user" << std::endl;
+    std::cout << "command -u" << std::endl;
 }
 
 int main(int argc, char *argv[]) {
     std::string path_home = "/root";
-    if (argc == 2) {
+    if (argc == 3 && (strcmp(argv[1], "-id") == 0)) {
         path_home.replace(0, 5, "/home/");
-        path_home.append(argv[1]);
+        path_home.append(argv[2]);
     }
 
-    const char *paths[] = {
-            "/home/xxx/.cache/test",
-            "/home/xxx/.cache/ttest1",
-            "/home/xxx/.cache/tedada",
-    };
 
     for (auto &path : paths) {
         created_directory(path);
-        if (argc == 2 && strcmp(argv[1], "umount") == 0) {
+        if (argc == 2 && strcmp(argv[1], "-u") == 0) {
             umount_path(path);
-        } else if (argc == 1) {
+        } else if (argc == 1 || argc == 3  && (strcmp(argv[1], "-id") == 0)) {
             std::string options = "size=5000m,mode=0755";
             struct stat st{};
             stat(path_home.c_str(), &st);

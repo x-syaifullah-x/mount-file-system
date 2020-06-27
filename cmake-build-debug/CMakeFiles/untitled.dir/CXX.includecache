@@ -17,10 +17,10 @@ cstring
 -
 sys/stat.h
 -
-unistd.h
--
-pwd.h
--
 cerrno
 -
+paths.h
+/tmp/CLionProjects/untitled/paths.h
+
+/tmp/CLionProjects/untitled/paths.h
 
