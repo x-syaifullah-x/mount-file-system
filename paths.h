@@ -1,5 +1,7 @@
 const char *paths[] = {
-        "/home/xxx/.cache/test",
-        "/home/xxx/.cache/ttest1",
-        "/home/xxx/.cache/tedada",
+        "/data/tmp",
+        "/data/data/com.termux/files/home/tmp",
+        "/data/anr",
+        "/data/backup",
+
 };

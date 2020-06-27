@@ -4,6 +4,7 @@
 #include <cstring>
 #include <sys/stat.h>
 #include <cerrno>
+#include <charconv>
 #include "paths.h"
 
 namespace fs = std::filesystem;
@@ -63,31 +64,54 @@ void usage() {
     std::cout << "command -u" << std::endl;
 }
 
+struct data {
+    std::string devices;
+    std::string user;
+};
+
 int main(int argc, char *argv[]) {
-    std::string path_home = "/root";
-    if (argc == 3 && (strcmp(argv[1], "-id") == 0)) {
-        path_home.replace(0, 5, "/home/");
-        path_home.append(argv[2]);
-        if (!fs::exists(path_home)) {
-            std::cout << "user dengan name " << argv[2] << " tidak ada" << std::endl;
+    data a;
+    for (int i = 0; i < argc; ++i) {
+        if (argv[i][0] == '-' && i != 0 && i + 1 != argc) {
+            const char *value = argv[i + 1];
+            switch (argv[i][1]) {
+                case 'd':
+                    a.devices = value;
+                    break;
+                case 'u':
+                    a.user = value;
+                    break;
+                default:
+                    exit(0);
+            }
         }
     }
-
-
-    for (auto &path : paths) {
-        created_directory(path);
-        if (argc == 2 && strcmp(argv[1], "-u") == 0) {
-            umount_path(path);
-        } else if (argc == 1 || argc == 3 && (strcmp(argv[1], "-id") == 0)) {
-            std::string options = "size=5000m,mode=0755";
-            struct stat st{};
-            stat(path_home.c_str(), &st);
-            options.append(",uid=" + std::to_string(st.st_gid) + ",gid=" + std::to_string(st.st_gid));
-            mount_path_to_ram(path, options.c_str());
-        } else {
-            usage();
-            break;
-        }
-    }
+    std::cout << a.devices << std::endl;
+    std::cout << a.user << std::endl;
+//    std::string path_home = "/root";
+//    if (argc == 3 && (strcmp(argv[1], "-id") == 0)) {
+//        path_home.replace(0, 5, "/home/");
+//        path_home.append(argv[2]);
+//        if (!fs::exists(path_home)) {
+//            std::cout << "user dengan name " << argv[2] << " tidak ada" << std::endl;
+//        }
+//    }
+//
+//
+//    for (auto &path : paths) {
+//        created_directory(path);
+//        if (argc == 2 && strcmp(argv[1], "-u") == 0) {
+//            umount_path(path);
+//        } else if (argc == 1 || argc == 3 && (strcmp(argv[1], "-id") == 0)) {
+//            std::string options = "size=5000m,mode=0755";
+//            struct stat st{};
+//            stat(path_home.c_str(), &st);
+//            options.append(",uid=" + std::to_string(st.st_gid) + ",gid=" + std::to_string(st.st_gid));
+//            mount_path_to_ram(path, options.c_str());
+//        } else {
+//            usage();
+//            break;
+//        }
+//    }
     return 0;
 }
