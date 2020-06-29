@@ -42,7 +42,7 @@ void MyTool::usage() {
 }
 
 /* directory not found create directory */
-void MyTool::check_directory(const char *path) {
+MyTool *MyTool::check_directory(const char *path) {
     std::string buffer;
     std::string pathToString(path);
 
@@ -69,4 +69,10 @@ void MyTool::check_directory(const char *path) {
             }
         }
     }
+    return this;
+}
+
+bool MyTool::user_check(std::string &path) {
+    /* is user exist true | false */
+    return false;
 }

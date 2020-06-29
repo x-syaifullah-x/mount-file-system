@@ -6,6 +6,24 @@
 
 #IncludeRegexTransform: 
 
+/tmp/CLionProjects/mount-file-system/src/MyTool.cpp
+MyTool.hpp
+/tmp/CLionProjects/mount-file-system/src/MyTool.hpp
+sys/mount.h
+-
+cerrno
+-
+iostream
+-
+filesystem
+-
+sys/mount.h
+-
+cstring
+-
+sys/stat.h
+-
+
 /tmp/CLionProjects/mount-file-system/src/MyTool.hpp
 iostream
 -

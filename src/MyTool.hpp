@@ -13,9 +13,9 @@ public:
 
     void usage();
 
-    void check_directory(const char *path);
+    MyTool *check_directory(const char *path);
 
-    void user_check(const char *path);
+    bool user_check(std::string &path);
 
 };
 
