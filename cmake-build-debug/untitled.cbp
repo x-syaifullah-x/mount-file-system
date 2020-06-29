@@ -82,16 +82,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/tmp/CLionProjects/mount-file-system/MyTool.cpp">
+		<Unit filename="/tmp/CLionProjects/mount-file-system/src/MyTool.cpp">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/tmp/CLionProjects/mount-file-system/MyTool.hpp">
+		<Unit filename="/tmp/CLionProjects/mount-file-system/src/MyTool.hpp">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/tmp/CLionProjects/mount-file-system/main.cpp">
+		<Unit filename="/tmp/CLionProjects/mount-file-system/src/main.cpp">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/tmp/CLionProjects/mount-file-system/paths.h">
+		<Unit filename="/tmp/CLionProjects/mount-file-system/src/paths.h">
 			<Option target="untitled"/>
 		</Unit>
 		<Unit filename="/tmp/CLionProjects/mount-file-system/CMakeLists.txt">

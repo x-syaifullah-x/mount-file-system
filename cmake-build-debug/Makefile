@@ -123,59 +123,59 @@ untitled/fast:
 	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
 .PHONY : untitled/fast
 
-MyTool.o: MyTool.cpp.o
+src/MyTool.o: src/MyTool.cpp.o
 
-.PHONY : MyTool.o
-
-# target to build an object file
-MyTool.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/MyTool.cpp.o
-.PHONY : MyTool.cpp.o
-
-MyTool.i: MyTool.cpp.i
-
-.PHONY : MyTool.i
-
-# target to preprocess a source file
-MyTool.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/MyTool.cpp.i
-.PHONY : MyTool.cpp.i
-
-MyTool.s: MyTool.cpp.s
-
-.PHONY : MyTool.s
-
-# target to generate assembly for a file
-MyTool.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/MyTool.cpp.s
-.PHONY : MyTool.cpp.s
-
-main.o: main.cpp.o
-
-.PHONY : main.o
+.PHONY : src/MyTool.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/MyTool.cpp.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/src/MyTool.cpp.o
+.PHONY : src/MyTool.cpp.o
 
-main.i: main.cpp.i
+src/MyTool.i: src/MyTool.cpp.i
 
-.PHONY : main.i
+.PHONY : src/MyTool.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/MyTool.cpp.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/src/MyTool.cpp.i
+.PHONY : src/MyTool.cpp.i
 
-main.s: main.cpp.s
+src/MyTool.s: src/MyTool.cpp.s
 
-.PHONY : main.s
+.PHONY : src/MyTool.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/MyTool.cpp.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/src/MyTool.cpp.s
+.PHONY : src/MyTool.cpp.s
+
+src/main.o: src/main.cpp.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -186,12 +186,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... untitled"
-	@echo "... MyTool.o"
-	@echo "... MyTool.i"
-	@echo "... MyTool.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/MyTool.o"
+	@echo "... src/MyTool.i"
+	@echo "... src/MyTool.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

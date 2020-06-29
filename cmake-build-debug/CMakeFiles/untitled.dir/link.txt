@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/MyTool.cpp.o  -o untitled 
+/usr/bin/c++  -g   CMakeFiles/untitled.dir/src/main.cpp.o CMakeFiles/untitled.dir/src/MyTool.cpp.o  -o untitled 

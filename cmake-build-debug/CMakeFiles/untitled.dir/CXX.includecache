@@ -6,33 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/tmp/CLionProjects/mount-file-system/MyTool.cpp
-MyTool.hpp
-/tmp/CLionProjects/mount-file-system/MyTool.hpp
-sys/mount.h
--
-cerrno
--
+/tmp/CLionProjects/mount-file-system/src/MyTool.hpp
 iostream
 -
-filesystem
--
-sys/mount.h
--
-cstring
--
-sys/stat.h
--
 
-/tmp/CLionProjects/mount-file-system/MyTool.hpp
-
-/tmp/CLionProjects/mount-file-system/main.cpp
+/tmp/CLionProjects/mount-file-system/src/main.cpp
 iostream
 -
 MyTool.hpp
-/tmp/CLionProjects/mount-file-system/MyTool.hpp
+/tmp/CLionProjects/mount-file-system/src/MyTool.hpp
 paths.h
-/tmp/CLionProjects/mount-file-system/paths.h
+/tmp/CLionProjects/mount-file-system/src/paths.h
 
-/tmp/CLionProjects/mount-file-system/paths.h
+/tmp/CLionProjects/mount-file-system/src/paths.h
 

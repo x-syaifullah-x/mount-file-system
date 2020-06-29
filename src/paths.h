@@ -4,5 +4,4 @@ const char *paths[] = {
         "/tmp/test/test/test",
         "/tmp/test/test/test/test",
         "/tmp/test/test/test/test/test",
-
 };

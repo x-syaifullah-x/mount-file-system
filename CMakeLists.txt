@@ -3,4 +3,4 @@ project(untitled)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(untitled main.cpp paths.h MyTool.cpp MyTool.hpp)
+add_executable(untitled src/main.cpp src/paths.h src/MyTool.cpp src/MyTool.hpp)
